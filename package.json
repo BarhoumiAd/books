@@ -1,0 +1,52 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./src/bin/www",
+    "test": "bash -c 'source ./docker/env-config.sh; NODE_ENV=test npm run lint && npm run jest -- --coverage --runInBand --forceExit'",
+    "lint": "eslint ./src",
+    "jest": "jest",
+    "svc_up": "./docker/svc_up.sh",
+    "svc_down": "./docker/svc_down.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "~2.6.9",
+    "express": "^4.17.1",
+    "ioredis": "^4.27.8",
+    "pg": "^8.7.1",
+    "pg-escape": "0.2.0",
+    "body-parser": "^1.19.0",
+    "uuid": "^8.3.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.3.2",
+    "supertest": "^6.1.6"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node",
+    "testURL": "http://localhost/",
+    "roots": [
+      "tests"
+    ],
+    "setupFiles": [
+      "<rootDir>/tests/setup.js"
+    ]
+  }
+}
