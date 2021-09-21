@@ -1,7 +1,6 @@
 const _ = require('lodash');
 const { Pool } = require('pg');
 const { config } = require('../util/config');
-const { dump } = require('../util/util');
 
 const NUMBER_OF_CONNECTIONS = 50;
 const IDLE_TIMEOUT = 30000;
@@ -47,10 +46,7 @@ class SQL {
           if (start < 0) start = 0;
           err = `. Look for: "${sql.substr(start, 20)}"`;
         }
-        dump(
-          `database/error-${Date.now()}-${sql.substring(0, 50)}.sql`,
-          `${error.message}${err}\n\n${sql} `
-        );
+        this.context.logger().error(`${error.message}${err}\n\n${sql}`);
       }
       throw error;
     }

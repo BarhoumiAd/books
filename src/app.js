@@ -9,6 +9,11 @@ app.use(requestResponseLogger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 const context = createSystemContext();
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ message: 'ok' });
+});
+
 setup(context)
   .then(() => {
     /* do nothing */

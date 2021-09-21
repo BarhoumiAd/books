@@ -13,4 +13,4 @@ lib
 .prettierrc
 README.md
 tests
-helm
+book-chart

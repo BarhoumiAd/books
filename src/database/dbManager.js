@@ -27,6 +27,7 @@ class DatabaseMgr {
       healthy = health.rowCount === 1;
     } catch (error) {
       healthy = false;
+      context.logger().error(`Postgres is down: ${error.message}`);
     } finally {
       // eslint-disable-next-line no-unsafe-finally
       return healthy;
